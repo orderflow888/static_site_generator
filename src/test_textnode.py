@@ -49,6 +49,8 @@ class TestTextNode(unittest.TestCase):
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, "code")
         self.assertEqual(html_node.value, "This is a code node")
+        
+
 
 if __name__ == "__main__":
     unittest.main()
