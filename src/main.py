@@ -1,7 +1,13 @@
 from textnode import TextNode
-
 import os
 import shutil
+
+from gencontent import generate_page
+
+dir_path_content = "./content"
+template_path = "./template.html"
+dir_path_static = "./static"
+dir_path_public = "./public"
 
 def copy_directory(src, dst):
     if os.path.exists(dst):
@@ -19,6 +25,13 @@ def copy_directory(src, dst):
 
 def main():
     copy_directory("static", "public")
+    print("Generating page...")
+    generate_page(
+        os.path.join(dir_path_content, "index.md"),
+        template_path,
+        os.path.join(dir_path_public, "index.html"),
+    )
+
     
 if __name__ == "__main__":
     main()
