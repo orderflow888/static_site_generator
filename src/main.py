@@ -1,8 +1,7 @@
-from textnode import TextNode
 import os
 import shutil
 
-from gencontent import generate_page
+from gencontent import generate_page, generate_pages_recursive
 
 dir_path_content = "./content"
 template_path = "./template.html"
@@ -25,12 +24,8 @@ def copy_directory(src, dst):
 
 def main():
     copy_directory("static", "public")
-    print("Generating page...")
-    generate_page(
-        os.path.join(dir_path_content, "index.md"),
-        template_path,
-        os.path.join(dir_path_public, "index.html"),
-    )
+    print("Generating pages...")
+    generate_pages_recursive(dir_path_content, template_path, dir_path_public)
 
     
 if __name__ == "__main__":
